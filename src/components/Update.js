@@ -13,9 +13,8 @@ const Update = () => {
     setID(localStorage.getItem("ID"));
     setFirstName(localStorage.getItem("First Name"));
     setLastName(localStorage.getItem("Last Name"));
-    setCheckbox(localStorage.getItem("Checkbox Value"));
+    setCheckbox(!!localStorage.getItem("Checkbox Value"));
   }, []);
-
   const updateAPIData = () => {
     axios
       .put(`https://62789e06d00bded55adb6201.mockapi.io/crudapi/${id}`, {
@@ -51,8 +50,8 @@ const Update = () => {
           <input
             type="checkbox"
             label="I agree to the Terms and Conditions"
-            checked={checkbox.toString()}
-            onChange={(e) => setCheckbox(!checkbox)}
+            checked={checkbox}
+            onChange={() => setCheckbox(!checkbox)}
           />
           <span style={{ color: "white" }}>
             I agree to the Terms and Conditions
